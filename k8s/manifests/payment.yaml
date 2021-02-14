@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment
+  namespace: sns
+  labels:
+    app: payment
+spec:
+  selector:
+    matchLabels:
+      app: payment
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: payment
+    spec:
+      containers:
+        - name: payment
+          image: sns-payment
+          resources:
+            requests:
+              cpu: 50m
+              memory: 20Mi
+            limits:
+              cpu: 75m
+              memory: 50Mi
+          readinessProbe:
+            initialDelaySeconds: 20
+            httpGet:
+              path: /health/readiness
+              port: 3000
+          livenessProbe:
+            initialDelaySeconds: 20
+            httpGet:
+              path: /health/liveness
+              port: 3000
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: CONFIG_DIR
+              value: "/opt/sns/app/config"
+            - name: REDIS_PASSWORD
+              valueFrom: 
+                secretKeyRef: 
+                  name: redis-secrets
+                  key: dbpassword
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment
+  namespace: sns
+  labels:
+    app: payment
+spec:
+  ports:
+    - port: 3000
+      nodePort: 32555
+  selector:
+    app: payment
+  type: NodePort
+
+
