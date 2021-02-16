@@ -18,6 +18,8 @@ spec:
       containers:
         - name: redis
           image: redis
+          args:
+            - /usr/local/etc/redis/redis.conf
           resources:
             requests:
               cpu: 50m
@@ -50,4 +52,3 @@ spec:
     targetPort: 6379
   selector:
     app: redis
-

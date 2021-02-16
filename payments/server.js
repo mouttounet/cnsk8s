@@ -20,14 +20,5 @@ app.listen(server_port, () => {
     logger.info(`Server is running on port ${server_port}.`)
 });
 
-app.get("/health/readiness", (req, res, next) => {
-    logger.info("Health / readiness : OK");
-    res.json("Health / readiness : OK");
-});
-
-app.get("/health/liveness", (req, res, next) => {
-    logger.info("Health / liveness : OK");
-    res.json("Health / liveness : OK");
-});
 
 
