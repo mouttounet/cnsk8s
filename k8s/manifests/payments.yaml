@@ -69,7 +69,6 @@ metadata:
 spec:
   ports:
     - port: 3000
-      nodePort: 32555
   selector:
     app: payments
-  type: NodePort
+  type: ClusterIP

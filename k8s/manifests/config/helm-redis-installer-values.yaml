@@ -1,0 +1,17 @@
+
+cluster:
+  enabled: true
+  slaveCount: 1
+redisPort: 6379
+networkPolicy:
+  enabled: false
+  allowExternal: true
+
+usePassword: true
+existingSecret: redis-secrets
+existingSecretPasswordKey: dbpassword
+
+persistence:
+  enabled: true
+  existingClaim: sns-redis-pvc
+

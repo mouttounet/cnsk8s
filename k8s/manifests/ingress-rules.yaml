@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sns-ingress
+  namespace: sns
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  tls:
+    - secretName: sns-tls
+      hosts:
+        - host1.lab        
+  rules:
+    - http:
+        paths:
+          - path: /payments/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: payments
+                port:
+                  number: 3000
+          - path: /subscriptions/(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: subscriptions
+                port:
+                  number: 3001
+

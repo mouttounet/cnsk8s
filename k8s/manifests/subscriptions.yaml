@@ -66,8 +66,6 @@ metadata:
 spec:
   ports:
     - port: 3001
-      nodePort: 32566
   selector:
     app: subscriptions
-  type: NodePort
 
