@@ -15,6 +15,12 @@ spec:
       labels:
         app: subscriptions
     spec:
+      serviceAccountName: sns-sa
+      securityContext:
+        runAsUser: 1001
+        fsGroup: 1001
+        runAsNonRoot: true
+        runAsGroup: 1000
       containers:
         - name: subscriptions
           image: sns-subscriptions
@@ -51,6 +57,10 @@ spec:
             - name: subscriptions-config-volume
               mountPath: /opt/sns/app/config/config.production.json
               subPath: config.production.json
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsUser: 1001
+            readOnlyRootFilesystem: true
       volumes:
         - name: subscriptions-config-volume
           configMap: 

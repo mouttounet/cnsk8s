@@ -9,7 +9,7 @@ data:
   config.production.json: |
     {
         "server_port": 3000,
-        "redis_host": "redis",
+        "redis_host": "sns-redis-rel-master",
         "redis_port": 6379,
         "log_file": "/opt/sns/logs/logfile.txt"
     }

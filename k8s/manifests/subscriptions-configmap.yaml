@@ -9,7 +9,7 @@ data:
   config.production.json: |
     {
         "server_port": 3001,
-        "redis_host": "redis",
+        "redis_host": "sns-redis-rel-master",
         "redis_port": 6379,
         "paymentUrlBase": "http://payments:3000",
         "pricePerMonth": 25.00
