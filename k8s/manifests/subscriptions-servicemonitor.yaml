@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: subscriptions-sm
+  namespace: sns
+  labels:
+    app: subscriptions
+    release: monitor-rel
+spec:
+  namespaceSelector:
+    matchNames:
+    - sns
+  selector:
+    matchLabels:
+      app: subscriptions 
+  endpoints:
+  - interval: 20s
+    path: /metrics
+    targetPort: 3001
+    scrapeTimeout: 5s
+

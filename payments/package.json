@@ -12,6 +12,7 @@
     "async-redis": "^1.1.7",
     "express": "^4.17.1",
     "pino": "^6.3.2",
+    "prom-client": "^13.1.0",
     "redis": "^3.0.2"
   }
 }

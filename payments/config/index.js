@@ -13,10 +13,12 @@ let determineEnv = () => {
 
     if(process.env.NODE_ENV === undefined || process.env.NODE_ENV == null) {  
         return defaultEnv
-    } else if(process.env.NODE_ENV == 'development') {
+    } else if(process.env.NODE_ENV === 'development') {
         return 'development'
-    } else if(process.env.NODE_ENV == 'production') {
+    } else if(process.env.NODE_ENV === 'production') {
         return 'production'
+    } else if(process.env.NODE_ENV === 'qa') {
+        return 'qa'
     } else {
         return defaultEnv
     }

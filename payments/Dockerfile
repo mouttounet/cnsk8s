@@ -10,6 +10,7 @@ RUN mkdir -p /opt/sns/app && \
 COPY --chown=1001:1001 config /opt/sns/app/config 
 COPY --chown=1001:1001 controllers /opt/sns/app/controllers
 COPY --chown=1001:1001 domain /opt/sns/app/domain
+COPY --chown=1001:1001 monitors /opt/sns/app/monitors
 COPY --chown=1001:1001 repositories /opt/sns/app/repositories
 COPY --chown=1001:1001 package*.json /opt/sns/app/
 COPY --chown=1001:1001 server.js /opt/sns/app/

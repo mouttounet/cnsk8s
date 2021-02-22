@@ -1,0 +1,20 @@
+
+redisAddress: redis://sns-redis-rel-master:6379
+serviceMonitor:
+  enabled: true
+  namespace: sns
+  interval: 30s
+  telemetryPath: /metrics
+  labels: 
+    app: prometheus-redis-exporter
+    release: monitor-rel
+  timeout: 5s
+
+auth:
+  enabled: true
+  secret:
+    name: "redis-secrets"
+    key: "dbpassword"
+  redisPassword: ""
+
+

@@ -8,6 +8,8 @@ const app = express();
 
 app.use(bodyParser.json());
 
+const loadMMonitors = require("./monitors");
+loadMMonitors(app, logger);
 const loadRepositories = require("./repositories");
 const loadControllers = require("./controllers");
 

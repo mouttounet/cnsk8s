@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: payments-sm
+  namespace: sns
+  labels:
+    app: payments
+    release: monitor-rel
+spec:
+  namespaceSelector:
+    matchNames:
+    - sns
+  selector:
+    matchLabels:
+      app: payments 
+  endpoints:
+  - interval: 20s
+    path: /metrics
+    targetPort: 3000
+    scrapeTimeout: 5s
+

@@ -15,7 +15,9 @@ let determineEnv = () => {
         return 'development';
     } else if(process.env.NODE_ENV === 'production') {
         return 'production';
-    } else {
+    } else if(process.env.NODE_ENV === 'qa') {
+        return 'qa';
+    }else {
         return defaultEnv;
     }
 };
